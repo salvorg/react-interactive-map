@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from "react-leaflet";
+import React, {useState} from 'react';
+import {MapContainer, Marker, Popup, TileLayer, useMapEvents} from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
-import L, { LatLngExpression } from 'leaflet';
+import L, {LatLngExpression} from 'leaflet';
 
 // Тип для маркера
 interface MarkerData {
@@ -50,6 +50,15 @@ const Map: React.FC = () => {
     setMarkers(updatedMarkers);
   };
 
+  // Обработчик удаления маркера
+  const handleRemove = (positionToRemove: LatLngExpression) => {
+    setMarkers((prevMarkers) =>
+      prevMarkers.filter((marker) => marker.position !== positionToRemove)
+    );
+  }
+
+  console.log(markers);
+
   return (
     <MapContainer center={[41.2044, 74.7661]}
                   zoom={8}
@@ -74,6 +83,14 @@ const Map: React.FC = () => {
                 placeholder="Введите описание маркера"
                 style={{ width: '15rem', height: '7rem' }}
               />
+            </div>
+            <div>
+              <button style={{ backgroundColor: "red" }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleRemove(marker.position);
+                      }}>
+                delete</button>
             </div>
           </Popup>
         </Marker>
