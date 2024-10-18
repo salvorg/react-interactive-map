@@ -5,10 +5,10 @@ import NavBar from "../components/NavBar/NavBar";
 
 const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Header />
       <NavBar />
-      <div className="max-w-7xl w-full mx-auto px-4">
+      <div className="flex-grow max-w-7xl w-full mx-auto px-4">
       {children}
       </div>
       <Footer />
