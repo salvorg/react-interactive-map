@@ -1,71 +1,37 @@
 import React from 'react';
-import {useNavigate} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
-  const navigate = useNavigate();
-  const buttonBaseClasses = "py-6 px-4 transition duration-200 sm:ml-4 w-full md:w-auto";
-  const buttonHoverClasses = "hover:bg-yellow hover:text-burgundy";
-  const buttonClasses = `${buttonBaseClasses} ${buttonHoverClasses}`;
+  const linkBaseClasses = "py-4 px-4 transition duration-200 w-full md:w-auto h-full text-center flex items-center justify-center";
+  const linkHoverClasses = "hover:bg-yellow hover:text-burgundy";
+  const linkActiveClasses = "text-burgundy bg-yellow";
+  const getLinkClasses = ({ isActive }: { isActive: boolean }) =>
+    `${linkBaseClasses} ${linkHoverClasses} ${isActive ? linkActiveClasses : 'text-white'}`;
 
   return (
     <nav className="sticky top-0 bg-burgundy text-white" role="navigation">
-      <div className="max-w-7xl w-full mx-auto px-4 grid sm-grid-rows-2 sm:grid-cols-4 sm:gap-2 lg:grid-cols-7 gap-4">
-        <button
-          onClick={() => {
-            navigate('/about')
-          }}
-          className={buttonClasses}
-        >
+      <div className="max-w-7xl w-full mx-auto px-4 grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+        <NavLink to="/about" className={getLinkClasses}>
           О ФОНДЕ
-        </button>
-        <button
-          onClick={() => {
-            navigate('/news')
-          }}
-          className={buttonClasses}
-        >
+        </NavLink>
+        <NavLink to="/news" className={getLinkClasses}>
           НОВОСТИ
-        </button>
-        <button
-          onClick={() => {
-            navigate('/analytics')
-          }}
-          className={buttonClasses}
-        >
+        </NavLink>
+        <NavLink to="/analytics" className={getLinkClasses}>
           АНАЛИТИКА
-        </button>
-        <button
-          onClick={() => {
-            navigate('/media-law')
-          }}
-          className={buttonClasses}
-        >
+        </NavLink>
+        <NavLink to="/media-law" className={getLinkClasses}>
           ЗАКОНЫ ПО МЕДИА
-        </button>
-        <button
-          onClick={() => {
-            navigate('/library')
-          }}
-          className={buttonClasses}
-        >
+        </NavLink>
+        <NavLink to="/library" className={getLinkClasses}>
           БИБЛИОТЕКА
-        </button>
-        <button
-          onClick={() => {
-            navigate('/projects')
-          }}
-          className={buttonClasses}
-        >
+        </NavLink>
+        <NavLink to="/projects" className={getLinkClasses}>
           ПРОЕКТЫ
-        </button>
-        <button
-          onClick={() => {
-            navigate('/map')
-          }}
-          className={buttonClasses}
-        >
+        </NavLink>
+        <NavLink to="/map" className={getLinkClasses}>
           КАРТА
-        </button>
+        </NavLink>
       </div>
     </nav>
   );
