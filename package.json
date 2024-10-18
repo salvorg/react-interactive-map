@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@heroicons/react": "^2.1.5",
     "@reduxjs/toolkit": "^2.3.0",
     "@types/node": "^16.18.108",
     "@types/react": "^18.3.8",
